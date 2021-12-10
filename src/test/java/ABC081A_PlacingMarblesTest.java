@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 
-public class ABC086_ATest {
+public class ABC081A_PlacingMarblesTest {
     private final StandardInputStream in = new StandardInputStream();
     private final StandardOutputStream out = new StandardOutputStream();
 
@@ -21,27 +21,23 @@ public class ABC086_ATest {
         System.setOut(null);
     }
 
-    // 偶数
     @Test
-    public void main01() {
+    public void カウント対象が存在する() {
 
-        in.inputln("1");
-        in.inputln("2");
+        in.inputln("101");
 
-        ABC086_A.main(null);
+        ABC081A_PlacingMarbles.main(null);
 
-        Assert.assertThat(out.readLine(), is("Even"));
+        Assert.assertThat(out.readLine(), is("2"));
     }
 
-    // 奇数
     @Test
-    public void main02() {
+    public void カウント対象が存在しない() {
 
-        in.inputln("7");
-        in.inputln("3");
+        in.inputln("000");
 
-        ABC086_A.main(null);
+        ABC081A_PlacingMarbles.main(null);
 
-        Assert.assertThat(out.readLine(), is("Odd"));
+        Assert.assertThat(out.readLine(), is("0"));
     }
 }

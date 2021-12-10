@@ -1,13 +1,10 @@
 import java.util.Scanner;
 
-public class ABC086_A {
-
+public class ABC086A {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        //単語の場合はnext()
-        //整数の場合はnextInt()
-        //文字列（1行）の場合はnextLine()
+        // 単語:next 整数:nextInt 文字列（1行）:nextLine
         int a = sc.nextInt();
         int b = sc.nextInt();
         if ((a * b) % 2 == 0) {
