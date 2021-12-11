@@ -1,9 +1,7 @@
-package AtCoderBeginnerContest231;
-
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class A_WaterPressure {
+public class ABC231A_WaterPressure {
     public static void main(String[] args) {
         // ■■■■■■■■■■■■■■■■■■■■
 

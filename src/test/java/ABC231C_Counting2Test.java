@@ -1,6 +1,3 @@
-package AtCoderBeginnerContest231;
-
-import AtCoderBeginnerContest231.C_Counting2;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,7 +5,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 
-public class C_Counting2Test {
+public class ABC231C_Counting2Test {
     private final StandardInputStream in = new StandardInputStream();
     private final StandardOutputStream out = new StandardOutputStream();
 
@@ -26,7 +23,7 @@ public class C_Counting2Test {
 
     // テスト対象
     private void targetRun() {
-        C_Counting2.main(null);
+        ABC231C_Counting2.main(null);
     }
 
     @Test

@@ -1,9 +1,7 @@
-package AtCoderBeginnerContest231;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class C_Counting2 {
+public class ABC231C_Counting2 {
     public static void main(String[] args) {
         // ■■■■■■■■■■■■■■■■■■■■
 

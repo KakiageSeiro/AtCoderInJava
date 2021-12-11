@@ -1,10 +1,8 @@
-package AtCoderBeginnerContest231;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class B_Election {
+public class ABC231B_Election {
     public static void main(String[] args) {
         // ■■■■■■■■■■■■■■■■■■■■
 

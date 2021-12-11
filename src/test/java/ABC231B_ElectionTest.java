@@ -1,6 +1,3 @@
-package AtCoderBeginnerContest231;
-
-import AtCoderBeginnerContest231.B_Election;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,7 +5,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 
-public class B_ElectionTest {
+public class ABC231B_ElectionTest {
     private final StandardInputStream in = new StandardInputStream();
     private final StandardOutputStream out = new StandardOutputStream();
 
@@ -26,7 +23,7 @@ public class B_ElectionTest {
 
     // テスト対象
     private void targetRun() {
-        B_Election.main(null);
+        ABC231B_Election.main(null);
     }
 
     @Test

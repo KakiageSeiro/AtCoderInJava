@@ -1,6 +1,3 @@
-package AtCoderBeginnerContest231;
-
-import AtCoderBeginnerContest231.A_WaterPressure;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,7 +5,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 
-public class A_WaterPressureTest {
+public class ABC231A_WaterPressureTest {
     private final StandardInputStream in = new StandardInputStream();
     private final StandardOutputStream out = new StandardOutputStream();
 
@@ -26,7 +23,7 @@ public class A_WaterPressureTest {
 
     // テスト対象
     private void targetRun() {
-        A_WaterPressure.main(null);
+        ABC231A_WaterPressure.main(null);
     }
 
     @Test
