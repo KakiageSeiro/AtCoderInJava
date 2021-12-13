@@ -1,5 +1,6 @@
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class ABC231C_Counting2 {
     public static void main(String[] args) {
@@ -7,34 +8,37 @@ public class ABC231C_Counting2 {
 
         Scanner sc = new Scanner(System.in);
 
-        int 人数 = sc.nextInt();
-        int 調査する身長の数 = sc.nextInt();
+        int n人数 = sc.nextInt();
+        int q調査する身長の数 = sc.nextInt();
 
-        HashMap<Integer, Integer> 生徒の身長とその登場回数 = new HashMap<>();
-        for (int i = 0; i < 人数; i++) {
-            int 生徒の身長 = sc.nextInt();
-
-            if (生徒の身長とその登場回数.containsKey(生徒の身長)) {
-                Integer その登場回数 = 生徒の身長とその登場回数.get(生徒の身長);
-                生徒の身長とその登場回数.put(生徒の身長, その登場回数 + 1);
-            } else {
-                生徒の身長とその登場回数.put(生徒の身長, 1);
-            }
+        List<Integer> 身長リスト = new ArrayList<>();
+        for (int i = 0; i < n人数; i++) {
+            身長リスト.add(sc.nextInt());
         }
 
-        List<Map.Entry<Integer, Integer>> 身長の小さい順に並び替えた登場回数リスト =
-                生徒の身長とその登場回数.entrySet().stream().sorted(Comparator.comparingInt(Map.Entry::getKey)).collect(Collectors.toList());
-        for (int i = 0; i < 調査する身長の数; i++) {
-            int 調査する身長 = sc.nextInt();
+        // 二分探索法のためのソート
+        身長リスト.sort(Integer::compareTo);
 
-            int 登場回数合計 = 0;
-            for (Map.Entry<Integer, Integer> 身長の小さい順に並び替えた登場回数 : 身長の小さい順に並び替えた登場回数リスト) {
-                if (身長の小さい順に並び替えた登場回数.getKey() >= 調査する身長) {
-                    登場回数合計 += 身長の小さい順に並び替えた登場回数.getValue();
+        for (int i = 0; i < q調査する身長の数; i++) {
+            int 調査対象身長 = sc.nextInt();
+
+            // 二分探索
+            int ok = n人数; // 身長リスト_小さい順[ok] >= x であることが分かっている
+            int ng = -1; // 身長リスト_小さい順[ng] < x であることが分かっている
+            while (ok - ng > 1) {
+                // 2数値の平均値
+                int 二分した値 = (ok + ng) / 2;
+
+                if (身長リスト.get(二分した値) >= 調査対象身長) {
+                    // 平均値で解けるなら後半の半分で探索
+                    ok = 二分した値;
+                } else {
+                    // 平均値で解けないなら後半の半分で探索
+                    ng = 二分した値;
                 }
             }
 
-            System.out.println(登場回数合計);
+            System.out.println(n人数 - ok);
         }
 
 
