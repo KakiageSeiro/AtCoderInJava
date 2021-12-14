@@ -1,9 +1,6 @@
 import java.util.Scanner;
 
-// 提出時にファイル名がMainで固定される
-// 各問題は問題の番号でクラスにし、テストしたい
-// ので、別クラスで作成した処理内容をこのファイルのmainメソッドに貼り付けて提出する
-public class Main {
+public class ABC048B_BetweenAandB {
     public static void main(String[] args) {
         // ■■■■■■■■■■■■■■■■■■■■
 
@@ -26,4 +23,5 @@ public class Main {
         // ■■■■■■■■■■■■■■■■■■■■
     }
 }
+
 
