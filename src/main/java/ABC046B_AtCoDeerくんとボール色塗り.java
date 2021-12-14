@@ -1,9 +1,6 @@
 import java.util.Scanner;
 
-// 提出時にファイル名がMainで固定される
-// 各問題は問題の番号でクラスにし、テストしたい
-// ので、別クラスで作成した処理内容をこのファイルのmainメソッドに貼り付けて提出する
-public class Main {
+public class ABC046B_AtCoDeerくんとボール色塗り {
     public static void main(String[] args) {
         // ■■■■■■■■■■■■■■■■■■■■
 
@@ -19,8 +16,8 @@ public class Main {
 
         System.out.println(塗り方の種類);
 
-
         // ■■■■■■■■■■■■■■■■■■■■
     }
 }
+
 
