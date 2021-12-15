@@ -56,6 +56,16 @@ public class ABC048B_BetweenAandBTest {
 
         Assert.assertThat(out.readLine(), is("0"));
     }
+
+    @Test
+    public void 入力例4() {
+
+        in.inputln("1 1000000000000000000 3");
+
+        targetRun();
+
+        Assert.assertThat(out.readLine(), is("333333333333333333"));
+    }
 }
 
 
