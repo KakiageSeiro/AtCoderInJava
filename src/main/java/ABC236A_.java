@@ -1,20 +1,26 @@
 import java.util.Scanner;
 
-public class ABC235A_ {
+public class ABC236A_ {
     public static void main(String[] args) {
         // ■■■■■■■■■■■■■■■■■■■■
 
         Scanner sc = new Scanner(System.in);
 
-        int abc = sc.nextInt();
-        int a = abc / 100;
-        int b = (abc - a * 100) / 10;
-        int c = abc % 10;
+        String[] s文字列 = sc.next().split("");
+        int a前の文字 = sc.nextInt();
+        int b後の文字 = sc.nextInt();
 
-        int bca = (b * 100) + (c * 10) + a;
-        int cab = (c * 100) + (a * 10) + b;
+        String a = s文字列[a前の文字 - 1];
+        String b = s文字列[b後の文字 - 1];
 
-        System.out.println(abc + bca + cab);
+        s文字列[b後の文字 - 1] = a;
+        s文字列[a前の文字 - 1] = b;
+
+        for (String s : s文字列) {
+            System.out.print(s);
+        }
+
+
 
 
         // ■■■■■■■■■■■■■■■■■■■■
