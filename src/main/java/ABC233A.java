@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ABC233A_ {
+public class ABC233A {
     public static void main(String[] args) {
         // ■■■■■■■■■■■■■■■■■■■■
 

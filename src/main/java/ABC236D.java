@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class ABC236C_ {
+public class ABC236D {
     public static void main(String[] args) {// ■■■■■■■■■■■■■■■■■■■■
 
         Scanner sc = new Scanner(System.in);
@@ -28,9 +28,6 @@ public class ABC236C_ {
                 System.out.println("No");
             }
         }
-
-
-
 
 
     }// ■■■■■■■■■■■■■■■■■■■■

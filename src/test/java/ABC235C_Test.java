@@ -23,7 +23,7 @@ public class ABC235C_Test {
 
     // テスト対象
     private void targetRun() {
-        ABC235C_.main(null);
+        ABC235C.main(null);
     }
 
     @Test

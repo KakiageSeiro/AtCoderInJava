@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class ABC233C_ {
+public class ABC233C {
     // ■■■■■■■■■■■■■■■■■■■■
 
     static int count = 0;
