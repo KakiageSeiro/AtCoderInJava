@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class ABC235C_ {
+public class ABC235C {
     public static void main(String[] args) {
         // ■■■■■■■■■■■■■■■■■■■■
 

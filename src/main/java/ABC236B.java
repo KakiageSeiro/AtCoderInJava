@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class ABC236B_ {
+public class ABC236B {
     public static void main(String[] args) {
         // ■■■■■■■■■■■■■■■■■■■■
 
