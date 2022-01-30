@@ -1,10 +1,9 @@
+import java.math.BigInteger;
 import java.util.*;
 
-// 提出時にファイル名がMainで固定される
-// 各問題は問題の番号でクラスにし、テストしたい
-// ので、別クラスで作成した処理内容をこのファイルのmainメソッドに貼り付けて提出する
-public class Main {
-    public static void main(String[] args) { // ■■■■■■■■■■■■■■■■■■■■
+public class ABC237C {
+
+    public static void main() { // ■■■■■■■■■■■■■■■■■■■■
 
         Scanner sc = new Scanner(System.in);
 
@@ -40,8 +39,9 @@ public class Main {
         String 先頭と末尾のaを除外した文字列 = s.substring(x, n - y);
         StringBuilder sb = new StringBuilder(先頭と末尾のaを除外した文字列);
         String s逆 = sb.reverse().toString();
-        if (先頭と末尾のaを除外した文字列.equals(s逆)) {
+        if (!先頭と末尾のaを除外した文字列.equals(s逆)) {
             System.out.println("No");
+            return;
         }
 
 
@@ -57,5 +57,34 @@ public class Main {
 
 
     } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+    static BigInteger n個のものからr個を選ぶ方法の数(long nLong, long rLong) {
+        if (nLong < rLong) {
+            return new BigInteger("0");
+        }
+
+        // nCr = n! / r!(n-r)!
+        // n(n-1)/r
+        BigInteger n = new BigInteger(String.valueOf(nLong));
+        BigInteger r = new BigInteger(String.valueOf(rLong));
+        return factorial階乗(n).divide( // n! / の部分
+                factorial階乗(r).multiply( // r!( の部分
+                        factorial階乗(n.subtract(r)) // n-_r の部分
+                )
+        );
+    }
+
+    // BigIntegerの四則演算
+    // + add
+    // - subtract
+    // * multiply
+    // / divide
+    static BigInteger factorial階乗(BigInteger target) {
+        if (target.longValue() == 0) {
+            return new BigInteger("1");
+        }
+        return target.multiply(factorial階乗(target.subtract(new BigInteger("1"))));
+    }
+
 }
 
