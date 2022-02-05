@@ -12,6 +12,7 @@ public class ABC238B {
 
         int n切る回数 = sc.nextInt();
         List<Integer> k切った箇所 = new ArrayList<>();
+        k切った箇所.add(0);
         k切った箇所.add(360);
 
         int t前回切った角度 = 0;
