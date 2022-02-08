@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 
-public class アルゴリズムと数学_節末問題_3_7_4_Test {
+public class アルゴリズムと数学_節末問題_3_7_6_Test {
     private final StandardInputStream in = new StandardInputStream();
     private final StandardOutputStream out = new StandardOutputStream();
 
@@ -23,18 +23,18 @@ public class アルゴリズムと数学_節末問題_3_7_4_Test {
 
     // テスト対象
     private void targetRun() {
-        アルゴリズムと数学_節末問題_3_7_4.main();
+        アルゴリズムと数学_節末問題_3_7_6.main();
     }
 
     @Test
     public void 入力例1() {
 
-        in.inputln("3 11");
-        in.inputln("2 5 9");
+        in.inputln("5");
+        in.inputln("2 5 3 3 1");
 
         targetRun();
 
-        Assert.assertThat(out.readLine(), is("Yes"));
+        Assert.assertThat(out.readLine(), is("8"));
     }
 
     @Test
