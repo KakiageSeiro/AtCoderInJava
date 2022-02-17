@@ -1,46 +1,47 @@
 import java.util.*;
 
-// 提出時にファイル名がMainで固定される
-// 各問題は問題の番号でクラスにし、テストしたい
-// ので、別クラスで作成した処理内容をこのファイルのmainメソッドに貼り付けて提出する
-public class Main {
-    public static void main(String[] args) { // ■■■■■■■■■■■■■■■■■■■■
-
+class Main {
+    public static void main(String[] args) {
+        // 入力
         Scanner sc = new Scanner(System.in);
-
-        int n数列の数 = sc.nextInt();
-        int k操作回数 = sc.nextInt();
-
-        List<Integer> a数列 = new ArrayList<>();
-        for (int i = 0; i < n数列の数; i++) {
-            a数列.add(sc.nextInt());
+        int H = sc.nextInt();
+        int W = sc.nextInt();
+        int[][] A = new int[H + 2][W + 2];
+        for (int i = 1; i <= H; i++) {
+            for (int j = 1; j <= W; j++) A[i][j] = Integer.parseInt(sc.next());
         }
 
-        int sum数列の合計 = a数列.stream().mapToInt(x -> x).sum();
-        boolean 数列合計が偶数なのに操作回数が奇数なので0にできない = sum数列の合計 % 2 == 0 && k操作回数 % 2 == 1;
-        boolean 数列合計が奇数なのに操作回数が偶数なので0にできない = sum数列の合計 % 2 == 1 && k操作回数 % 2 == 0;
-        if (数列合計が偶数なのに操作回数が奇数なので0にできない || 数列合計が奇数なのに操作回数が偶数なので0にできない) {
-            System.out.println("No");
-            return;
+        // 行の総和を計算する
+        int[] gyou = new int[H + 2];
+        for (int i = 1; i <= H; i++) {
+            gyou[i] = 0;
+            for (int j = 1; j <= W; j++) gyou[i] += A[i][j];
         }
 
-        // Kの操作がすべて-1だとしても、数を0にしきれない場合はNo確定
-        if(k操作回数 < sum数列の合計){
-            System.out.println("No");
-            return;
+        // 列の総和を計算する
+        int[] retu = new int[W + 2];
+        for (int j = 1; j <= W; j++) {
+            retu[j] = 0;
+            for (int i = 1; i <= H; i++) retu[j] += A[i][j];
         }
 
-        // いったん数を0になるまで-1操作をし、その後+1→-1(二回操作)を繰り返すことができるならYes
-        int 残り操作回数 = sum数列の合計 - k操作回数;
-        if (残り操作回数 % 2 ==0) {
-            System.out.println("Yes");
-            return;
+        // 各マスに対する答えを計算する
+        int[][] Answer = new int[H + 2][W + 2];
+        for (int i = 1; i <= H; i++) {
+            for (int j = 1; j <= W; j++) {
+                Answer[i][j] = gyou[i] + retu[j] - A[i][j];
+            }
         }
 
-        System.out.println("No");
-
-        // ■■■■■■■■■■■■■■■■■■■■
+        // 空白区切りで出力
+        StringBuilder ans = new StringBuilder();
+        for (int i = 1; i <= H; i++) {
+            for (int j = 1; j <= W; j++) {
+                if (j != 1) ans.append(' ');
+                ans.append(Answer[i][j]);
+            }
+            ans.append('\n');
+        }
+        System.out.println(ans.toString());
     }
-
 }
-
