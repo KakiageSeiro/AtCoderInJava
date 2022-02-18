@@ -1,7 +1,8 @@
-import java.util.*;
+import java.util.Scanner;
 
-class Main {
-    public static void main(String[] args) {
+public class アルゴリズムと数学_節_5_5_1 {
+    public static void main() {
+        // ■■■■■■■■■■■■■■■■■■■■
 
         Scanner sc = new Scanner(System.in);
 
@@ -13,5 +14,8 @@ class Main {
         long max = Math.max(Math.max(a * c, a * d), Math.max(b * c, b * d));
         System.out.println(max);
 
+
+        // ■■■■■■■■■■■■■■■■■■■■
     }
 }
+
