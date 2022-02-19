@@ -1,7 +1,8 @@
-import java.util.*;
+import java.util.Scanner;
 
-class Main {
-    public static void main(String[] args) {
+public class アルゴリズムと数学_節_5_5_2 {
+    public static void main() {
+        // ■■■■■■■■■■■■■■■■■■■■
 
         Scanner sc = new Scanner(System.in);
 
