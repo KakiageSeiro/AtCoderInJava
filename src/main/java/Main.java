@@ -5,58 +5,83 @@ class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        int N点の数 = sc.nextInt();
-        int K含む点の数 = sc.nextInt();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        int d = sc.nextInt();
 
-        int[] X = new int[N点の数 + 1];
-        int[] Y = new int[N点の数 + 1];
+        List<Integer> s素数リスト = new ArrayList<>();
+        s素数リスト.add(2);
+        s素数リスト.add(3);
+        s素数リスト.add(5);
+        s素数リスト.add(7);
+        s素数リスト.add(11);
+        s素数リスト.add(13);
+        s素数リスト.add(17);
+        s素数リスト.add(19);
+        s素数リスト.add(23);
+        s素数リスト.add(29);
+        s素数リスト.add(31);
+        s素数リスト.add(37);
+        s素数リスト.add(41);
+        s素数リスト.add(43);
+        s素数リスト.add(47);
+        s素数リスト.add(53);
+        s素数リスト.add(59);
+        s素数リスト.add(61);
+        s素数リスト.add(67);
+        s素数リスト.add(71);
+        s素数リスト.add(73);
+        s素数リスト.add(79);
+        s素数リスト.add(83);
+        s素数リスト.add(89);
+        s素数リスト.add(97);
+        s素数リスト.add(101);
+        s素数リスト.add(103);
+        s素数リスト.add(107);
+        s素数リスト.add(109);
+        s素数リスト.add(113);
+        s素数リスト.add(127);
+        s素数リスト.add(131);
+        s素数リスト.add(137);
+        s素数リスト.add(139);
+        s素数リスト.add(149);
+        s素数リスト.add(151);
+        s素数リスト.add(157);
+        s素数リスト.add(163);
+        s素数リスト.add(167);
+        s素数リスト.add(173);
+        s素数リスト.add(179);
+        s素数リスト.add(181);
+        s素数リスト.add(191);
+        s素数リスト.add(193);
+        s素数リスト.add(197);
+        s素数リスト.add(199);
+        s素数リスト.add(211); // tt高橋さんの選択の次の素数に入るかも?
 
-        for (int i = 0; i < N点の数; i++) {
-            X[i + 1] = sc.nextInt();
-            Y[i + 1] = sc.nextInt();
-        }
-
-        // 長方形左右の辺のx座標はXのどれかと一致するはず
-        // 長方形上下の辺のy座標はXのどれかと一致するはず
-
-        long ans = Long.MAX_VALUE;
-        for (int i = 1; i <= N点の数; i++) {
-            for (int j = 1; j <= N点の数; j++) {
-                for (int k = 1; k <= N点の数; k++) {
-                    for (int l = 1; l <= N点の数; l++) {
-                        // 長方形の位置
-                        int 左 = X[i];
-                        int 右 = X[j];
-                        int 上 = Y[k];
-                        int 下 = Y[l];
-
-                        if (長方形に含まれている点の数(N点の数, X, Y, 左, 右, 下, 上) >= K含む点の数) {
-                            long 面積 = (long) (右 - 左) * (上 - 下);
-                            ans = Math.min(ans, 面積);
-                        }
-                    }
-                }
+        // 高橋さんが選べる最大の素数を選ぶ。Bは確実に2以上なので、素数を選べないということはない
+        int t高橋さんの選択 = 0;
+        for (int i = 0; i < s素数リスト.size(); i++) {
+            if (s素数リスト.get(i) <= b) {
+                t高橋さんの選択 = s素数リスト.get(i);
             }
         }
 
-        System.out.println(ans);
+        // 青木さんが次の素数を選択できる場合は勝利。
+        // 青木さんが選べる数字 + t高橋さんの選択 = 素数リストにあればおK
+        int min青木さんが選べる最小の数字 = t高橋さんの選択 + c;
+        int max青木さんが選べる最大の数字 = t高橋さんの選択 + d;
+        long 青木さんが選べる素数の数 = s素数リスト.stream().filter(s素数 -> min青木さんが選べる最小の数字 <= s素数 && s素数 <= max青木さんが選べる最大の数字).count();
 
-        // ■■■■■■■■■■■■■■■■■■■■
-    }
-
-    static int 長方形に含まれている点の数(int N点の数, int[] X, int[] Y, int 左, int 右, int 下, int 上) {
-        int 点が含まれている数 = 0;
-        for (int i = 1; i <= N点の数; i++) {
-            // 点(X[i], Y[i])が長方形に含まれているかどうかを判定
-            boolean 点が長方形の左辺より右側 = 左 <= X[i];
-            boolean 点が長方形の右辺より左側 = X[i] <= 右;
-            boolean 点が長方形の下辺より上側 = 下 <= Y[i];
-            boolean 点が長方形の上辺より下側 = Y[i] <= 上;
-            if (点が長方形の左辺より右側 && 点が長方形の右辺より左側 && 点が長方形の上辺より下側 && 点が長方形の下辺より上側) {
-                点が含まれている数++;
-            }
+        if(青木さんが選べる素数の数 > 0) {
+            System.out.println("Aoki");
+            return;
         }
-        return 点が含まれている数;
-    }
+
+        System.out.println("Takahashi");
+
+
+    }// ■■■■■■■■■■■■■■■■■■■■
+
 }
 
