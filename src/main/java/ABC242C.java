@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-class Main {
-    public static void main(String[] args) {
+public class ABC242C {
+    public static void main(String[] args) {// ■■■■■■■■■■■■■■■■■■■■
 
         Scanner sc = new Scanner(System.in);
 
@@ -13,7 +13,7 @@ class Main {
             最大の数字 = 最大の数字 + "9";
         }
 
-        int start = 0;
+        int start = 999999999;
         if (N桁数 == 1) {
             start = 1;
         } else if (N桁数 == 2) {
@@ -60,4 +60,7 @@ class Main {
 
 
     }// ■■■■■■■■■■■■■■■■■■■■
+
 }
+
+
