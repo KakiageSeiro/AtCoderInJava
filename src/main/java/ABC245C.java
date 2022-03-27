@@ -16,102 +16,78 @@ public class ABC245C {
             B[i] = sc.nextInt();
         }
 
-        int[] zzz = new int[N];
+        // -----入力ここまで-----
 
-        int mae = A[0];
-        for (int i = N - 1; i > 0; i--) {
-            int aの最後 = A[i];
-            int 手前のa = A[i - 1];
-            //X[i] - X[i + 1] <= K
-            //手前のa - aの最後 <= K
-            if (Math.abs(手前のa - aの最後) <= K) continue;
+        // ■DPを数学アルゴリズム本で復習後にやってみた
+        // dp[]定義を「X[i]-X[i+1]したときに一番小さい値になる数字(X[i+1]に一番近い)」と考える
+        // さらに、X[i+1]はAかBから選ぶので、↑をAとB両方で計算した結果、さらに次の値X[i+2]と比較し差が小さいほうを選ぶ必要がある。
+        // 全探索になってしまう
+        // "さらに次の値X[i+2]と比較し差が小さいほうを選ぶ"ので、後ろから計算したほうが筋がよさそう
 
+        // 後ろから考える
+        // 最後にする行動は
+        // X[N-1] - X[N] <= K になる
+        // ① X[N-1]は、X[N]に近い方をAorBから選ぶ
+//        int[] dp = new int[N + 9];
 
+        // 最初のX[N]をどう決める？
+        // A[N]とB[N]を決め打ち
+//        dp[N - 1] = A[N - 1];
+//        for (int i = N - 1; i >= 0; i--) {
+//            // ①
+//            int min近いほう = Math.min(Math.abs(dp[i] - A[i - 1]), Math.abs(dp[i] - B[i - 1]));
+//            dp[i-1]=min近いほう;
+//            // 疑問A:近いほうを次のdpにしたとして、次の次のAorBが「今回の遠いほう」に近い場合、遠いほうが最適になるのでは？
+//            // ■ここでAtcoderの解説を見る
+//
+//            // ↓解説をかみ砕く
+//            // dpを「X[i]まで考慮したときに、X[i]=A[i]でよいか」とする
+//            // epを「X[i]まで考慮したときに、X[i]=B[i]でよいか」とする
+//            // dp[3]=true でi=4の時、直前はA[i]でOKだったとわかる
+//            // ep[3]=falseでi=4の時、直前はB[i]でNGだったとわかる
+//
+//            // 今回のdpを判定する
+//            //   前回はAで行けた→前回のA-今回のA(A[i-1] - A[i])をしてKと比較①
+//            //   前回はBで行けた→前回のB-今回のA(B[i-1] - A[i])をしてKと比較②
+//            //     上記どっちかがtrueの場合はdp[i]=trueとする
+//            //       dpは「X[n]まで考慮したときに、X[i]=A[i]でよいか」なので、
+//            //         「X[今回]まで考慮したときに、X[今回]=A[今回]でよいか」=trueとなる
+//
+//            // 今回のepを判定する(↑のepバージョンをやる)
+//            //   前回はAで行けた→前回のA-今回のB(A[i-1] - B[i])をしてKと比較③
+//            //   前回はBで行けた→前回のB-今回のB(B[i-1] - B[i])をしてKと比較④
+//
+//            // これで疑問Aが解消する(AとB最適がどっちかわからない→両方計算しちゃえばいいじゃん。ってこと)
+//
+//            // 実装する
+//        }
 
+        boolean[] dp = new boolean[N];
+        boolean[] ep = new boolean[N];
+        dp[0] = true;
+        ep[0] = true;
+        for (int i = 1; i <= N - 1; i++) {
+            // X[i]まで考慮したときに、X[i]=A[i]でよいか(dp)
+            // X[i]まで考慮したときに、X[i]=B[i]でよいか(ep)
+            // を判定
+            if (dp[i - 1]) {
+                if (Math.abs(A[i - 1] - A[i]) <= K) dp[i] = true; // ①
+                if (Math.abs(A[i - 1] - B[i]) <= K) ep[i] = true; // ③
+            }
 
+            if (ep[i - 1]) { // ここは①か③がtrueだったらやらなくていいかも(計算量的には微量(最悪ケースで*2になる)なので今回はそのまま)
+                if (Math.abs(B[i - 1] - A[i]) <= K) dp[i] = true; // ②
+                if (Math.abs(B[i - 1] - B[i]) <= K) ep[i] = true; // ④
+            }
         }
 
-
-//
-//        //X[i] - X[i + 1] <= K
-//        int mae = 0;
-//        int maetiisai = A[0] > B[0] ? B[0] : A[0];
-//        int maeookii = !(A[0] > B[0]) ? B[0] : A[0];
-//        mae = maetiisai;
-//        zzz[0] = mae;
-//        for (int i = 0; i < N - 1; i++) {
-//            int tiisai = 0;
-//            int ookii = 0;
-//            if (A[i + 1] > B[i + 1]) {
-//                tiisai = B[i + 1];
-//                ookii = A[i + 1];
-//            } else {
-//                tiisai = A[i + 1];
-//                ookii = B[i + 1];
-//            }
-//
-//            int tiisaiZrttai = Math.abs(mae - tiisai);
-//            int ookiiZrttai = Math.abs(mae - ookii);
-//            if (K - tiisaiZrttai > K - ookiiZrttai) {
-//
-//            }
-//
-//
-//            // まずは小さい数字で試す
-//            // (次のループでmae - ?をやったときに、maeが小さい方が結果が小さくなり、クリアしやすい)
-//            if (Math.abs(mae - tiisai) <= K) {
-//                mae = tiisai;
-//                zzz[i + 1] = mae;
-//                continue;
-//            }
-//
-//            // 大きい数字の場合はどうか？
-//            if (Math.abs(mae - ookii) <= K) {
-//                mae = ookii;
-//                zzz[i + 1] = mae;
-//                continue;
-//            }
-//        }
-//
-//
-//        // X先頭だけ大きい方から開始
-//        mae = maeookii;
-//        zzz[0] = mae;
-//        for (int i = 0; i < N - 1; i++) {
-//            int tiisai = 0;
-//            int ookii = 0;
-//            if (A[i + 1] > B[i + 1]) {
-//                tiisai = B[i + 1];
-//                ookii = A[i + 1];
-//            } else {
-//                tiisai = A[i + 1];
-//                ookii = B[i + 1];
-//            }
-//
-//            // まずは小さい数字で試す
-//            // (次のループでmae - ?をやったときに、maeが小さい方が結果が小さくなり、クリアしやすい)
-//            if (Math.abs(mae - tiisai) <= K) {
-//                mae = tiisai;
-//                zzz[i + 1] = mae;
-//                continue;
-//            }
-//
-//            // 大きい数字の場合はどうか？
-//            if (Math.abs(mae - ookii) <= K) {
-//                mae = ookii;
-//                zzz[i + 1] = mae;
-//                continue;
-//            }
-//
-//            System.out.println("No");
-//            return;
-//        }
-//
-//        System.out.println("Yes");
-
+        if (dp[N - 1] || ep[N - 1]) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
 
     }// ■■■■■■■■■■■■■■■■■■■■
-
 }
 
 
