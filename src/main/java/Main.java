@@ -5,35 +5,68 @@ class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        Long[] A = new Long[N];
-        Long[] B = new Long[N];
+        int K = sc.nextInt();
+        int[] A = new int[N];
+        int[] B = new int[N];
         for (int i = 0; i < N; i++) {
-            A[i] = sc.nextLong();
+            A[i] = sc.nextInt();
         }
 
         for (int i = 0; i < N; i++) {
-            B[i] = sc.nextLong();
+            B[i] = sc.nextInt();
         }
 
-        int countZ = 0; //A にも B にも含まれ、その位置も一致している整数
-        int countY = 0; //A にも B にも含まれるが、その位置は異なる整数
-        for (int i = 0; i < N; i++) {
-            if (A[i] == B[i]) {
-                countZ++;
+        int[] zzz = new int[N];
+
+        //次のA[i]を優先して確認し、行けるならそれを使う動的計画法
+        //X[i] - X[i + 1] <= K
+        int mae = A[0];
+        zzz[0] = mae;
+        boolean a始まり = true;
+        for (int i = 0; i < N - 1; i++) {
+            if (Math.abs(mae - A[i + 1]) <= K){
+                mae = A[i + 1];
+                zzz[i + 1] = mae;
             } else {
-                for (int j = 0; j < N; j++) {
-                    if (i == j) continue;
-                    if (A[i] == B[j]) {
-                        countY++;
-                        break;
-                    }
+                // Bの場合はどうか？
+                if (Math.abs(mae - B[i + 1]) <= K){
+                    mae = B[i + 1];
+                    zzz[i + 1] = mae;
+                    continue;
                 }
+                a始まり = false; // AB両方条件に当てはまらない
+                break; // A優先だと無理なのでもう処理しない
             }
         }
 
-        System.out.println(countZ);
-        System.out.println(countY);
+        if (a始まり) {
+            System.out.println("Yes");
+            return;
+        }
 
+        //次のB[i]を優先して確認し、行けるならそれを使う動的計画法
+        mae = B[0];
+        boolean b始まり = true;
+        for (int i = 0; i < N - 1; i++) {
+            if (Math.abs(mae - B[i + 1]) <= K){
+                mae = B[i + 1];
+            } else {
+                // Bの場合はどうか？
+                if (Math.abs(mae - B[i + 1]) <= K){
+                    mae = B[i + 1];
+                    continue;
+                }
+                b始まり = false;
+                break; // B優先だと無理なのでもう処理しない
+            }
+        }
+
+        if (b始まり) {
+            System.out.println("Yes");
+            return;
+        }
+
+        System.out.println("No");
 
     }// ■■■■■■■■■■■■■■■■■■■■
 }
