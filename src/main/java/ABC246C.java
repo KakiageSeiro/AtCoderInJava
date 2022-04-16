@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Main {
+public class ABC246C {
     public static void main(String[] args) {// ■■■■■■■■■■■■■■■■■■■■
         Scanner sc = new Scanner(System.in);
 
@@ -30,7 +30,5 @@ class Main {
     }// ■■■■■■■■■■■■■■■■■■■■
 
 }
-
-
 
 
