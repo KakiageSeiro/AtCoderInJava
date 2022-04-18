@@ -1,35 +1,55 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
-public class ABC246A {
+public class ABC248A {
     public static void main(String[] args) {// ■■■■■■■■■■■■■■■■■■■■
         Scanner sc = new Scanner(System.in);
 
-        int x1 = sc.nextInt();
-        int y1 = sc.nextInt();
-        int x2 = sc.nextInt();
-        int y2 = sc.nextInt();
-        int x3 = sc.nextInt();
-        int y3 = sc.nextInt();
-
-        int x = 999999999;
-        if (x1 == x2) {
-            x = x3;
-        } else if (x1 == x3){
-            x = x2;
-        } else {
-            x = x1;
+        String s = sc.next();
+        HashMap<String, String> map = new HashMap<>();
+        for (String s1 : s.split("")) {
+            map.put(s1, "");
         }
 
-        int y = 999999999;
-        if (y1 == y2) {
-            y = y3;
-        } else if (y1 == y3){
-            y = y2;
-        } else {
-            y = y1;
+        if(!map.containsKey("0")){
+            System.out.println("0");
         }
 
-        System.out.println(x + " " + y);
+        if(!map.containsKey("1")){
+            System.out.println("1");
+        }
+
+        if(!map.containsKey("2")){
+            System.out.println("2");
+        }
+
+        if(!map.containsKey("3")){
+            System.out.println("3");
+        }
+
+        if(!map.containsKey("4")){
+            System.out.println("4");
+        }
+
+        if(!map.containsKey("5")){
+            System.out.println("5");
+        }
+
+        if(!map.containsKey("6")){
+            System.out.println("6");
+        }
+
+        if(!map.containsKey("7")){
+            System.out.println("7");
+        }
+
+        if(!map.containsKey("8")){
+            System.out.println("8");
+        }
+
+        if(!map.containsKey("9")){
+            System.out.println("9");
+        }
 
     }// ■■■■■■■■■■■■■■■■■■■■
 }

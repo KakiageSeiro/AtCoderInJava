@@ -1,6 +1,6 @@
-import java.util.*;
+import java.util.Scanner;
 
-class Main {
+public class ABC248B {
     public static void main(String[] args) {// ■■■■■■■■■■■■■■■■■■■■
         Scanner sc = new Scanner(System.in);
 
@@ -19,11 +19,7 @@ class Main {
             count++;
         }
 
-
     }// ■■■■■■■■■■■■■■■■■■■■
-
 }
-
-
 
 

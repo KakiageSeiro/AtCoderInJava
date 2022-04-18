@@ -8,7 +8,7 @@ public class ABC246C {
         int K = sc.nextInt();
         int X = sc.nextInt();
 
-        Map<Integer, Integer> A = new HashMap<>()
+        Map<Integer, Integer> A = new HashMap<>();
         for (int i = 0; i < N; i++) {
             A.put(i, sc.nextInt());
         }
