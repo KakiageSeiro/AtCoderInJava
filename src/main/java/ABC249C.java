@@ -1,9 +1,10 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
-class Main {
+public class ABC249C {
     public static void main(String[] args) {// ■■■■■■■■■■■■■■■■■■■■
         Scanner sc = new Scanner(System.in);
-
 
         int N = sc.nextInt();
         int K = sc.nextInt();
@@ -30,10 +31,8 @@ class Main {
 
         System.out.println(count);
 
+
     }// ■■■■■■■■■■■■■■■■■■■■
-
 }
-
-
 
 
